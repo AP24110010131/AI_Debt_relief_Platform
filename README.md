@@ -3,7 +3,58 @@
 > An intelligent AI-driven web application that helps users analyze their financial condition, predict debt settlement strategies, and generate personalized negotiation letters using Generative AI.
 
 ---
+## 🗄️ Entity Relationship (ER) Diagram
 
+```mermaid
+erDiagram
+
+    USER ||--o{ LOAN : owns
+    USER ||--|| FINANCIAL_PROFILE : has
+    USER ||--o{ SETTLEMENT_PREDICTION : receives
+    USER ||--o{ AI_NEGOTIATION : generates
+
+    USER {
+        int id PK
+        string full_name
+        string email
+        string phone
+        string password
+    }
+
+    LOAN {
+        int id PK
+        int user_id FK
+        string lender
+        string loan_type
+        float outstanding_amount
+        float interest_rate
+        int tenure
+    }
+
+    FINANCIAL_PROFILE {
+        int id PK
+        int user_id FK
+        float monthly_income
+        float monthly_expenses
+        float savings
+        float credit_score
+    }
+
+    SETTLEMENT_PREDICTION {
+        int id PK
+        int user_id FK
+        float recommended_settlement
+        float success_probability
+        string recommendation
+    }
+
+    AI_NEGOTIATION {
+        int id PK
+        int user_id FK
+        text negotiation_letter
+        datetime generated_at
+    }
+```
 ## 📌 Project Overview
 
 Managing debt can be stressful and time-consuming. This platform simplifies the debt recovery process by leveraging Artificial Intelligence to analyze financial information and recommend the best debt settlement options.
